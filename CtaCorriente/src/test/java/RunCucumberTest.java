@@ -13,9 +13,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/features",  // Ruta donde se encuentran los archivos .feature
-    glue = {"com.stepdefs"},         // Ruta de los step definitions
-    plugin = {"json:target/cucumber.json"}    // Generación del reporte JSON en target/cucumber.json
+    plugin = {"json:target/cucumber-reports/CucumberTestReport.json"},
+    features = "src/test/resources/features",
+    glue = "stepDefinitions"
 )
+
 public class RunCucumberTest {
 }
