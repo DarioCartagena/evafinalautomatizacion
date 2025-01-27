@@ -145,7 +145,7 @@
                             <goal>generate-reports</goal>
                         </goals>
                         <configuration>
-                            <jsonOutputDirectory>${project.build.directory}</jsonOutputDirectory>
+                            <jsonOutputDirectory>${project.build.directory}/cucumber-reports</jsonOutputDirectory>
                         </configuration>
                     </execution>
                 </executions>
