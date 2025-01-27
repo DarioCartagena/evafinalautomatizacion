@@ -54,9 +54,20 @@
         <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
+            <artifactId>cucumber-maven-plugin</artifactId>
             <version>7.20.1</version>
             <scope>test</scope>
+            <executions>
+        <execution>
+            <goals>
+                <goal>generate-reports</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <jsonOutputDirectory>${project.build.directory}/cucumber-reports</jsonOutputDirectory>
+    </configuration>
+</plugin>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
