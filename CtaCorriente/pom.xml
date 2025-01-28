@@ -16,10 +16,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee>10.0.0</jakartaee>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        
     </properties>
 
     <!-- Dependencies -->
@@ -32,10 +30,10 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JUnit -->
+        <!-- JUnit for unit testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
@@ -47,19 +45,23 @@
             <version>8.0.33</version>
         </dependency>
 
-        <!-- Selenium -->
+        <!-- Selenium for Web UI testing -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.10.0</version>
         </dependency>
 
-        <!-- Cucumber -->
+        <!-- Cucumber dependencies for automated testing -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.20.1</version>
-            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>7.20.1</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -68,44 +70,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Jackson -->
+        <!-- Jackson for JSON processing -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
-        </dependency>
-
-        <!-- Java EE Legacy -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.4</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <!-- Build Configuration -->
     <build>
         <plugins>
-            <!-- Compiler Plugin -->
+            <!-- Compiler Plugin for compiling source code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -117,40 +93,14 @@
                 </configuration>
             </plugin>
 
-            <!-- WAR Plugin -->
+            <!-- WAR Plugin for creating a WAR file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
 
-            <!-- Dependency Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Cucumber Maven Plugin -->
+            <!-- Cucumber Maven Plugin for automated testing -->
             <plugin>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-maven-plugin</artifactId>
@@ -167,14 +117,20 @@
                 </executions>
             </plugin>
 
-            <!-- Surefire Plugin -->
+            <!-- Surefire Plugin for running JUnit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
             </plugin>
+
+            <!-- Dependency Plugin for handling dependencies -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
         </plugins>
     </build>
-
 </project>
 
