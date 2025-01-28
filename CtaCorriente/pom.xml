@@ -13,16 +13,13 @@
     <name>CtaCorriente-1.0-SNAPSHOT</name>
 
     <!-- Properties -->
-    <properties>
+    properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee>10.0.0</jakartaee>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <!-- Dependencies -->
     <dependencies>
-        <!-- Jakarta EE API -->
+        
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
@@ -30,29 +27,25 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JUnit for unit testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.4</version>
-            <type>jar</type>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2 </version>
+            <scope>test</scope>
         </dependency>
 
-        <!-- MySQL Connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
 
-        <!-- Selenium for Web UI testing -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.10.0</version>
         </dependency>
 
-        <!-- Cucumber dependencies for automated testing -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -60,86 +53,30 @@
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-spring</artifactId>
-            <version>7.20.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.20.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Jackson for JSON processing -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.0</version>
         </dependency>
     </dependencies>
 
-    <!-- Build Configuration -->
     <build>
         <plugins>
-            <!-- Compiler Plugin for compiling source code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <fork>true</fork>
-                    <meminitial>256m</meminitial>
-                    <maxmem>1024m</maxmem>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
 
-            <!-- WAR Plugin for creating a WAR file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-
-            <!-- Cucumber Maven Plugin for automated testing -->
-            <plugin>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-maven-plugin</artifactId>
-                <version>7.20.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate-reports</goal>
-                        </goals>
-                        <configuration>
-                            <jsonOutputDirectory>${project.build.directory}/cucumber-reports</jsonOutputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Surefire Plugin for running JUnit tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-            </plugin>
-
-            <!-- Dependency Plugin for handling dependencies -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.0</version>
-            </plugin>
         </plugins>
     </build>
-
-    <!-- Repositories -->
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-    </repositories>
 
 </project>
 
