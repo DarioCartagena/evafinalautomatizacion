@@ -34,8 +34,8 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
+            <version>5.11.4</version>
+            <type>jar</type>
         </dependency>
 
         <!-- MySQL Connector -->
@@ -56,12 +56,12 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.20.1</version>
+            <version>7.19.1</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-spring</artifactId>
-            <version>7.20.1</version>
+            <version>7.19.1</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -104,7 +104,7 @@
             <plugin>
                 <groupId>io.cucumber</groupId>
                 <artifactId>cucumber-maven-plugin</artifactId>
-                <version>7.20.1</version>
+                <version>7.19.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -132,5 +132,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Repositories -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
 </project>
 
